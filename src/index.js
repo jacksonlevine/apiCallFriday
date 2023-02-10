@@ -9,14 +9,12 @@ window.onload = () => {
   let form = document.querySelector("form");
   let sound = new Audio(coins);
 
-  let testArray = ["This is one thing", "This is another thing", "Hello this is a test", "One thing another thing", "Test test test", "Hello"];
-  displayMoreInfo(testArray);
-
   form.onsubmit = (event) => {
     event.preventDefault();
     let inputUSD = parseFloat(document.getElementById("input").value);
     let toCurrency = document.querySelector("option:checked");
     let ratePromise = Currency.getExchangeRateFromUSD(toCurrency.id);
+    populateRandomRates();
     ratePromise.then(
       (response)=>{
         if(response.conversion_rate) {
@@ -95,5 +93,21 @@ function displayMoreInfo(infoArray) {
     p.style.animationDelay = `${index*0.35}s`
     div.append(p);
   });
-  document.body.querySelector(".main2").append(div);
+  document.body.querySelector("#moreInfo").innerText = "";
+  document.body.querySelector("#moreInfo").append(div);
+}
+
+function populateRandomRates() {
+  let ratesArray = [];
+  let ratesPromise = Currency.getAllExchangeRates();
+  ratesPromise.then((response)=> {
+    for(let i = 0; i < 5; i++) {
+      let index = Math.floor((Object.keys(response.rates).length-1) * Math.random());
+      ratesArray.push(`The current exchange rate for ${Object.keys(response.rates)[index]} is ${response.rates[Object.keys(response.rates)[index]]}`);
+    }
+    displayMoreInfo(ratesArray);
+  },
+  (error)=> {
+    displayMoreInfo(["More info could not be fetched." + error]);
+  });
 }

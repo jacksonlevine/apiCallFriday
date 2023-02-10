@@ -14,6 +14,7 @@ body {
   text-align: center;
   display:flex;
   justify-content: center;
+  font-size:125%;
 }
 
 body p {
@@ -36,12 +37,11 @@ body p {
   display:flex;
   flex-direction:row;
   line-height:50%;
-  transform: translateY(30px) translateX(-50px);
+  transform: translateY(30px) translateX(-25px);
   font-size:140%;
   color:red;
   -webkit-text-stroke:1px red;
   text-shadow:0px 5px 5px black;
- 
 }
 
 .listItem .ascii {

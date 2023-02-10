@@ -29,4 +29,19 @@ export class Currency {
       }
       );
   }
+  static async getAllExchangeRates(){
+    return fetch('https://open.er-api.com/v6/latest/USD').then(
+      (response) => {
+        if (!response.ok) {
+          const errorMessage = `${response.status} ${response.statusText}`;
+          throw new Error(errorMessage);
+        } else {
+          return response.json();
+        }
+      }
+    )
+    .catch((error)=> {
+      return error;
+    });
+  }
 }
