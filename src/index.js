@@ -4,7 +4,7 @@ import coins from './coins.mp3';
 import { asciiNumberDisplay } from './asciiNumberDisplay.js';
 
 window.onload = () => {
-  displayAsciiCounter("4");
+  displayAsciiCounter("");
   populateSupportedCodes();
   let form = document.querySelector("form");
   let sound = new Audio(coins);
@@ -17,8 +17,10 @@ window.onload = () => {
     ratePromise.then(
       (response)=>{
         if(response.conversion_rate) {
-          let output = `Your amount is equal to <strong>${(parseFloat(response.conversion_rate)*inputUSD).toFixed(2)} ${toCurrency.innerText}s.</strong>
+          let answer = (parseFloat(response.conversion_rate)*inputUSD).toFixed(2);
+          let output = `Your amount is equal to <strong>${answer} ${toCurrency.innerText}s.</strong>
           The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
+          displayAsciiCounter(answer.toString());
           displayOutput(output);
           sound.play();
         } else {
