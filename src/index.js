@@ -9,6 +9,9 @@ window.onload = () => {
   let form = document.querySelector("form");
   let sound = new Audio(coins);
 
+  let testArray = ["This is one thing", "This is another thing", "Hello this is a test", "One thing another thing", "Test test test", "Hello"];
+  displayMoreInfo(testArray);
+
   form.onsubmit = (event) => {
     event.preventDefault();
     let inputUSD = parseFloat(document.getElementById("input").value);
@@ -74,5 +77,14 @@ function displayAsciiCounter(number) {
 
 function displayMoreInfo(infoArray) {
   let div = document.createElement("div");
-  infoArray.forEach()
+  div.className = "moreInfo";
+  infoArray.forEach((string, index)=>{
+    let p = document.createElement("p");
+    p.innerText = string;
+    p.style.opacity = '0';
+    p.style.animation = 'change 0.3s forwards'
+    p.style.animationDelay = `${index*0.35}s`
+    div.append(p);
+  });
+  document.body.append(div);
 }
