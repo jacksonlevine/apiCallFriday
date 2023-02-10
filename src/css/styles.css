@@ -15,4 +15,12 @@ body p {
 p#ascii {
   white-space: pre;
   font-family: monospace;
+  background-color: black;
+  width:fit-content;
+  padding:20px;
+}
+
+#topDisplay {
+  display:flex;
+  justify-content: center;
 }

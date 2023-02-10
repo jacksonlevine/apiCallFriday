@@ -34,7 +34,7 @@ export class asciiNumberDisplay {
             "@@@@@"+
             "...@."+
             "...@."],
-            [5, 
+            [5,
               "@@@@@"+
               "@...."+
               "@@@@."+
@@ -64,6 +64,12 @@ export class asciiNumberDisplay {
                       "@@@@@"+
                       "....@"+
                       "@@@@@"],
+                      [10, 
+                        "....."+
+                        "....."+
+                        "....."+
+                        "....."+
+                        "..@.."]
 ]);
     let array = numberString.split("");
     if(array.length > displayWidth) {
@@ -83,7 +89,7 @@ export class asciiNumberDisplay {
             if(numbs.get(parseInt(array[i]))) {
               string += numbs.get(parseInt(array[i]))[k + (j*numbWidth)];
             } else {
-              string += "X";
+              string += numbs.get(10)[k + (j*numbWidth)];
             }
           }
           string += " ";

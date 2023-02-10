@@ -1,4 +1,4 @@
-# Currency Exchanger
+# Convert From USD
 By Jackson Levine
 
 ### Description
