@@ -1,6 +1,11 @@
 body h1 {
   font-size:400%;
-  color:yellow;
+  line-height:10px;
+}
+
+.bold {
+  font-weight:bold;
+  -webkit-text-stroke: 2px;
 }
 
 body {
@@ -12,15 +17,22 @@ body p {
   color: white;
 }
 
-p#ascii {
+.ascii {
   white-space: pre;
   font-family: monospace;
-  background-color: black;
   width:fit-content;
   padding:20px;
 }
 
-#topDisplay {
+.blackBack {
+  background-color: black;
+}
+
+.topDisplay {
   display:flex;
   justify-content: center;
+}
+
+.yellow {
+  color:yellow;
 }

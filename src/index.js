@@ -68,6 +68,6 @@ function populateSupportedCodes() {
 }
 
 function displayAsciiCounter(number) {
-  let asciiSpot = document.getElementById("ascii");
+  let asciiSpot = document.getElementById("asciiNumber");
   asciiSpot.innerText = asciiNumberDisplay.getDisplay(number);
 }
