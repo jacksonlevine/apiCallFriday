@@ -71,3 +71,8 @@ function displayAsciiCounter(number) {
   let asciiSpot = document.getElementById("asciiNumber");
   asciiSpot.innerText = asciiNumberDisplay.getDisplay(number);
 }
+
+function displayMoreInfo(infoArray) {
+  let div = document.createElement("div");
+  infoArray.forEach()
+}
