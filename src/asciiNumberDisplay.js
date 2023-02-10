@@ -75,12 +75,8 @@ export class asciiNumberDisplay {
     if(array.length > displayWidth) {
       return "NUMBER TOO LARGE";
     } else {
-      if(array.length < displayWidth) {
-        for(let i = 0; i <= (displayWidth-array.length); i++) {
-          //debugger;
-          array.unshift("0");
-          //debugger;
-        }
+      for(let i = array.length; i < displayWidth; i++) {
+        array.unshift("0");
       }
       let string = "";
       for(let j = 0; j < numbHeight; j++) {
