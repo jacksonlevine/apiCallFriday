@@ -1,0 +1,13 @@
+body h1 {
+  font-size:400%;
+  color:yellow;
+}
+
+body {
+  background-color: green;
+  text-align: center;
+}
+
+body p {
+  color: white;
+}

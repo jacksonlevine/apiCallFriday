@@ -1,4 +1,5 @@
 import { Currency } from './currency.js';
+import './css/styles.css';
 
 window.onload = () => {
   populateSupportedCodes();
