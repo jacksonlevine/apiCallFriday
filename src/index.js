@@ -1,5 +1,36 @@
 import { Currency } from './currency.js';
+
 window.onload = () => {
+  populateSupportedCodes();
+  let form = document.querySelector("form");
+  form.onsubmit = (event) => {
+    event.preventDefault();
+    let inputUSD = document.getElementById("input").value;
+    let toCurrency = document.querySelector("option:checked").id;
+    let ratePromise = Currency.getExchangeRateFromUSD(toCurrency);
+    ratePromise.then(
+      (response)=>{
+        displayOutput(response.conversion_rate);
+      },
+      (error)=>{
+
+      }
+    );
+  };
+};
+
+function displayError(msg) {
+  let errorSpot = document.getElementById("errorSpot");
+  errorSpot.innerText = msg.toUpperCase();
+}
+
+function displayOutput(msg) {
+  let outputSpot = document.getElementById("output");
+  outputSpot.innerText = msg;
+  displayError("");
+}
+
+function populateSupportedCodes() {
   let codeSelectElement = document.getElementById("convertTo");
   let codesPromise = Currency.getSupportedCodes();
   codesPromise.then(
@@ -14,11 +45,6 @@ window.onload = () => {
       codeSelectElement.innerHTML = newSelect.innerHTML;
     },
     (error)=>{
-      displayError(error);
+      displayError(`${error.result} ${error["error-type"]}`);
     });
-};
-
-function displayError(msg) {
-  let errorSpot = document.getElementById("errorSpot");
-  errorSpot.innerText = msg;
 }
