@@ -1,11 +1,11 @@
 import { Currency } from './currency.js';
 import './css/styles.css';
-import './coins.mp3';
+import coins from './coins.mp3';
 
 window.onload = () => {
   populateSupportedCodes();
   let form = document.querySelector("form");
-  let sound = new Audio('coins.mp3');
+  let sound = new Audio(coins);
 
   form.onsubmit = (event) => {
     event.preventDefault();
