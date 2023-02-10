@@ -1,9 +1,12 @@
 import { Currency } from './currency.js';
 import './css/styles.css';
+import './coins.mp3';
 
 window.onload = () => {
   populateSupportedCodes();
   let form = document.querySelector("form");
+  let sound = new Audio('coins.mp3');
+
   form.onsubmit = (event) => {
     event.preventDefault();
     let inputUSD = parseFloat(document.getElementById("input").value);
@@ -15,6 +18,7 @@ window.onload = () => {
           let output = `Your amount is equal to <strong>${(parseFloat(response.conversion_rate)*inputUSD).toFixed(2)} ${toCurrency.innerText}s.</strong>
           The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
           displayOutput(output);
+          sound.play();
         } else {
           displayError(response);
         }
