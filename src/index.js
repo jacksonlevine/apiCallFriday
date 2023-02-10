@@ -76,15 +76,24 @@ function displayAsciiCounter(number) {
 }
 
 function displayMoreInfo(infoArray) {
+  let pointer =       
+  `  .#@#. 
+  :@%@:  
+  '#@#'`;
   let div = document.createElement("div");
   div.className = "moreInfo";
   infoArray.forEach((string, index)=>{
-    let p = document.createElement("p");
+    let p = document.createElement("div");
+    p.className = "listItem";
     p.innerText = string;
+    let ascii = document.createElement("p");
+    ascii.className = "ascii";
+    ascii.innerText = pointer;
+    p.prepend(ascii);
     p.style.opacity = '0';
     p.style.animation = 'change 0.3s forwards'
     p.style.animationDelay = `${index*0.35}s`
     div.append(p);
   });
-  document.body.append(div);
+  document.body.querySelector(".main2").append(div);
 }

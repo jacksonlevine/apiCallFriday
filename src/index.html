@@ -4,26 +4,30 @@
   <title>Currency Exchanger!</title>
 </head>
 <body>
-  <div class="topDisplay">
-    <p class="ascii yellow bold">
+  <div class="main">
+    <div class="topDisplay">
+      <p class="ascii yellow bold">
 
-    .#@#.    
-    :@%@:    
-    '#@#'    </p>
-    <h1 class="yellow">Convert from USD</h1>
-    <p class="ascii yellow bold">
+      .#@#.    
+      :@%@:    
+      '#@#'    </p>
+      <h1 class="yellow">Convert from USD</h1>
+      <p class="ascii yellow bold">
 
-    .#@#.    
-    :@%@:    
-    '#@#'    </p>
+      .#@#.    
+      :@%@:    
+      '#@#'    </p>
+    </div>
+    <div class="topDisplay">
+      <p class="ascii blackBack" id="asciiNumber"></p>
+    </div>
+    <div class="main2">
+      <form>
+        <p>Convert <input type="number" inputmode="decimal" min="0" step=".01" id="input"> USD into <select id="convertTo"></select> <button type="submit">Enter</button></p>
+      </form> 
+      <p id="output"></p>
+      <p id="errorSpot"></p>
+    </div>
   </div>
-  <div class="topDisplay">
-    <p class="ascii blackBack" id="asciiNumber"></p>
-  </div>
-  <form>
-    <p>Convert <input type="number" inputmode="decimal" min="0" step=".01" id="input"> USD into <select id="convertTo"></select> <button type="submit">Enter</button></p>
-  </form> 
-  <p id="output"></p>
-  <p id="errorSpot"></p>
 </body>
 </html>
