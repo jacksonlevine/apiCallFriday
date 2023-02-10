@@ -1,6 +1,7 @@
 import { Currency } from './currency.js';
 import './css/styles.css';
 import coins from './coins.mp3';
+import chaching from './sound.mp3';
 import { asciiNumberDisplay } from './asciiNumberDisplay.js';
 
 window.onload = () => {
@@ -8,6 +9,7 @@ window.onload = () => {
   populateSupportedCodes();
   let form = document.querySelector("form");
   let sound = new Audio(coins);
+  let sound2 = new Audio(chaching);
 
   form.onsubmit = (event) => {
     event.preventDefault();
@@ -23,7 +25,11 @@ window.onload = () => {
           The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
           displayAsciiCounter(answer.toString());
           displayOutput(output);
-          sound.play();
+          if(answer > 100000) {
+            sound2.play();
+          } else {
+            sound.play();
+          }
         } else {
           displayError(response);
         }
