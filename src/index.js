@@ -5,15 +5,19 @@ window.onload = () => {
   let form = document.querySelector("form");
   form.onsubmit = (event) => {
     event.preventDefault();
-    let inputUSD = document.getElementById("input").value;
-    let toCurrency = document.querySelector("option:checked").id;
-    let ratePromise = Currency.getExchangeRateFromUSD(toCurrency);
+    let inputUSD = parseFloat(document.getElementById("input").value);
+    let toCurrency = document.querySelector("option:checked");
+    let ratePromise = Currency.getExchangeRateFromUSD(toCurrency.id);
     ratePromise.then(
       (response)=>{
-        displayOutput(response.conversion_rate);
-      },
-      (error)=>{
-
+        if(response.conversion_rate) {
+          let output = `Your amount is equal to <strong>${(parseFloat(response.conversion_rate)*inputUSD).toFixed(2)} ${toCurrency.innerText}s.</strong>
+          The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
+          displayOutput(output);
+        } else {
+          displayError(response);
+        }
+        
       }
     );
   };
@@ -21,12 +25,12 @@ window.onload = () => {
 
 function displayError(msg) {
   let errorSpot = document.getElementById("errorSpot");
-  errorSpot.innerText = msg.toUpperCase();
+  errorSpot.innerText = msg;
 }
 
 function displayOutput(msg) {
   let outputSpot = document.getElementById("output");
-  outputSpot.innerText = msg;
+  outputSpot.innerHTML = msg;
   displayError("");
 }
 
@@ -35,16 +39,21 @@ function populateSupportedCodes() {
   let codesPromise = Currency.getSupportedCodes();
   codesPromise.then(
     (response)=>{
-      let newSelect = document.createElement("select");
-      response.supported_codes.forEach((currency) => {
-        let optionElement = document.createElement("option");
-        optionElement.id = currency[0];
-        optionElement.innerText = currency[1];
-        newSelect.append(optionElement);
-      });
-      codeSelectElement.innerHTML = newSelect.innerHTML;
-    },
-    (error)=>{
-      displayError(`${error.result} ${error["error-type"]}`);
+      if(response.supported_codes) {
+        let newSelect = document.createElement("select");
+        response.supported_codes.forEach((currency) => {
+          let optionElement = document.createElement("option");
+          optionElement.id = currency[0];
+          optionElement.innerText = currency[1];
+          newSelect.append(optionElement);
+        });
+        let optionElement2 = document.createElement("option");
+        optionElement2.id = "INTENTIONALERROR";
+        optionElement2.innerText = "Erroneous Currency";
+        newSelect.append(optionElement2);
+        codeSelectElement.innerHTML = newSelect.innerHTML;
+      } else {
+        displayError(response);
+      }
     });
 }
