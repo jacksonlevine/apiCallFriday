@@ -10,7 +10,7 @@ body h1 {
 }
 
 body {
-  background-color: green;
+  background-color: rgb(62, 86, 50);
   text-align: center;
   display:flex;
   justify-content: center;
@@ -38,10 +38,11 @@ body p {
   flex-direction:row;
   line-height:50%;
   transform: translateY(30px) translateX(-25px);
-  font-size:140%;
-  color:red;
-  -webkit-text-stroke:1px red;
-  text-shadow:0px 5px 5px black;
+  font-size:110%;
+  color:black;
+  text-shadow:2px 5px 10px rgb(0, 0, 0),
+0px 0px 4px white;
+  font-weight:bold;
 }
 
 .listItem .ascii {
