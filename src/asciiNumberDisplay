@@ -1,61 +1,63 @@
 export class asciiNumberDisplay {
-  width = 5;
-  numbs = new Map([
+  displayWidth = 5;
+  static numbWidth = 5;
+  static numbHeight = 5;
+  static numbs = new Map([
     [0, 
       "@@@@@"+
       "@...@"+
       "@...@"+
       "@...@"+
       "@@@@@"],
-      [0, 
+      [1, 
         "..@.."+
         "@@@.."+
         "..@.."+
         "..@.."+
         "@@@@@"],
-        [0, 
+        [2, 
           ".@@@."+
           "@...@"+
           "..@@."+
           ".@..."+
           "@@@@@"],
-          [0, 
+          [3, 
             ".@@@."+
             "....@"+
             "..@@@"+
             "....@"+
             ".@@@."],
-            [0, 
+            [4, 
               "....@"+
               ".@..@"+
               "@@@@@"+
               "...@."+
               "...@."],
-              [0, 
+              [5, 
                 "@@@@@"+
                 "@...."+
                 "@@@@."+
                 "....@"+
                 "@@@@@"],
-                [0, 
+                [6, 
                   "@@@@@"+
                   "@...."+
                   "@@@@@"+
                   "@...@"+
                   "@@@@@"],
-                  [0, 
+                  [7, 
                     "@@@@@"+
                     "....@"+
                     "....@"+
                     "....@"+
                     "....@"],
-                    [0, 
+                    [8, 
                       "@@@@@"+
                       "@...@"+
                       ".@@@."+
                       "@...@"+
                       "@@@@@"],
-                      [0, 
+                      [9, 
                         "@@@@@"+
                         "@...@"+
                         "@@@@@"+
@@ -63,7 +65,12 @@ export class asciiNumberDisplay {
                         "@@@@@"],
   ]);
   constructor(width) {
-    this.width = width;
+    this.displayWidth = width;
   }
-  static get
+  static getSingleNumber(number) {
+    if(this.numbs.has(number)) {
+      return this.numbs.get(number);
+    }
+    return false;
+  }
 }
