@@ -40,8 +40,6 @@ body p {
   transform: translateY(30px) translateX(-25px);
   font-size:110%;
   color:black;
-  text-shadow:2px 5px 10px rgb(0, 0, 0),
-0px 0px 4px white;
   font-weight:bold;
 }
 
