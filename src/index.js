@@ -1,8 +1,10 @@
 import { Currency } from './currency.js';
 import './css/styles.css';
 import coins from './coins.mp3';
+import { asciiNumberDisplay } from './asciiNumberDisplay.js';
 
 window.onload = () => {
+  displayAsciiCounter("4");
   populateSupportedCodes();
   let form = document.querySelector("form");
   let sound = new Audio(coins);
@@ -61,4 +63,9 @@ function populateSupportedCodes() {
         displayError(response);
       }
     });
+}
+
+function displayAsciiCounter(number) {
+  let asciiSpot = document.getElementById("ascii");
+  asciiSpot.innerText = asciiNumberDisplay.getDisplay(number);
 }

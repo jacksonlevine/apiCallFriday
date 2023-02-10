@@ -11,3 +11,8 @@ body {
 body p {
   color: white;
 }
+
+p#ascii {
+  white-space: pre;
+  font-family: monospace;
+}
