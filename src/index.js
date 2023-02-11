@@ -22,7 +22,7 @@ window.onload = () => {
       (response)=>{
         if(response.conversion_rate) {
           let answer = (parseFloat(response.conversion_rate)*input).toFixed(2);
-          let output = `Your amount is equal to <strong>${answer} ${toCurrency.innerText}s.</strong>
+          let output = `Your amount in ${fromCurrency.innerText}s is equal to <strong>${answer} ${toCurrency.innerText}s.</strong>
           The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
           displayAsciiCounter(answer.toString());
           displayOutput(output);
@@ -112,7 +112,7 @@ function populateRandomRates() {
   ratesPromise.then((response)=> {
     for(let i = 0; i < 5; i++) {
       let index = Math.floor((Object.keys(response.rates).length-1) * Math.random());
-      ratesArray.push(`The current exchange rate for ${Object.keys(response.rates)[index]} is ${response.rates[Object.keys(response.rates)[index]]}`);
+      ratesArray.push(`The current exchange rate from USD to ${Object.keys(response.rates)[index]} is ${response.rates[Object.keys(response.rates)[index]]}`);
     }
     displayMoreInfo(ratesArray);
   },

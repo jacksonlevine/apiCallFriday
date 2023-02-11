@@ -5,6 +5,8 @@ By Jackson Levine
 
 Using Exchange Rate API, this application allows the user to enter in a US dollar amount and see it converted to any currency.
 
+Includes 'Erroneous Currency' to demonstrate error handling and displaying.
+
 ## Technologies Used:
 
 * JavaScript
