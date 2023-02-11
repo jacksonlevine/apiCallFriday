@@ -13,14 +13,15 @@ window.onload = () => {
 
   form.onsubmit = (event) => {
     event.preventDefault();
-    let inputUSD = parseFloat(document.getElementById("input").value);
-    let toCurrency = document.querySelector("option:checked");
-    let ratePromise = Currency.getExchangeRateFromUSD(toCurrency.id);
+    let input = parseFloat(document.getElementById("input").value);
+    let fromCurrency = document.querySelector("#convertFrom option:checked");
+    let toCurrency = document.querySelector("#convertTo option:checked");
+    let ratePromise = Currency.getExchangeRateFromNToN(fromCurrency.id, toCurrency.id);
     populateRandomRates();
     ratePromise.then(
       (response)=>{
         if(response.conversion_rate) {
-          let answer = (parseFloat(response.conversion_rate)*inputUSD).toFixed(2);
+          let answer = (parseFloat(response.conversion_rate)*input).toFixed(2);
           let output = `Your amount is equal to <strong>${answer} ${toCurrency.innerText}s.</strong>
           The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
           displayAsciiCounter(answer.toString());
@@ -52,6 +53,7 @@ function displayOutput(msg) {
 
 function populateSupportedCodes() {
   let codeSelectElement = document.getElementById("convertTo");
+  let codeFromElement = document.getElementById("convertFrom");
   let codesPromise = Currency.getSupportedCodes();
   codesPromise.then(
     (response)=>{
@@ -68,6 +70,7 @@ function populateSupportedCodes() {
         optionElement2.innerText = "Erroneous Currency";
         newSelect.append(optionElement2);
         codeSelectElement.innerHTML = newSelect.innerHTML;
+        codeFromElement.innerHTML = newSelect.innerHTML;
       } else {
         displayError(response);
       }
@@ -95,8 +98,8 @@ function displayMoreInfo(infoArray) {
     ascii.innerText = pointer;
     p.prepend(ascii);
     p.style.opacity = '0';
-    p.style.animation = 'change 0.3s forwards'
-    p.style.animationDelay = `${index*0.35}s`
+    p.style.animation = 'change 0.3s forwards';
+    p.style.animationDelay = `${index*0.35}s`;
     div.append(p);
   });
   document.body.querySelector("#moreInfo").innerText = "";

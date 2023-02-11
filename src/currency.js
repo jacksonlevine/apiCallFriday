@@ -14,8 +14,8 @@ export class Currency {
       }
       );
   }
-  static async getExchangeRateFromUSD(toCurrency) {
-    return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${toCurrency}`).then(
+  static async getExchangeRateFromNToN(fromCurrency, toCurrency) {
+    return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${fromCurrency}/${toCurrency}`).then(
       (response) => {
         if (!response.ok) {
           const errorMessage = `${response.status} ${response.statusText}`;
@@ -29,7 +29,7 @@ export class Currency {
       }
       );
   }
-  static async getAllExchangeRates(){
+  static async getAllExchangeRates() {
     return fetch('https://open.er-api.com/v6/latest/USD').then(
       (response) => {
         if (!response.ok) {
@@ -40,8 +40,8 @@ export class Currency {
         }
       }
     )
-    .catch((error)=> {
-      return error;
-    });
+      .catch((error) => {
+        return error;
+      });
   }
 }
