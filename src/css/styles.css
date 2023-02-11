@@ -8,13 +8,23 @@ body h1 {
   font-weight:bold;
   -webkit-text-stroke: 2px;
 }
+html {
+  display:flex;
+  justify-content: center;
+  background-color: rgb(69, 91, 49);
+}
 
 body {
-  background-color: rgb(33, 22, 4);
+  background-color: rgb(126, 92, 61);
   text-align: center;
   display:flex;
   justify-content: center;
   font-size:125%;
+  width:fit-content;
+  scroll-behavior: smooth;
+  padding-bottom:30%;
+  padding-left:50px;
+  padding-right:50px;
 }
 
 body p {
@@ -43,7 +53,7 @@ body p {
   display:flex;
   flex-direction:row;
   line-height:50%;
-  transform: translateY(30px) translateX(-25px);
+  transform: translateY(30px) translateX(75px);
   font-size:110%;
   color:white;
   font-weight:bold;
@@ -67,6 +77,8 @@ body p {
 
 .blackBack {
   background-color: black;
+  border-radius:20px;
+  border: 20px outset white;
 }
 
 .topDisplay {
