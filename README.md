@@ -1,11 +1,13 @@
-# Convert From USD
+# Currency Converter
 By Jackson Levine
 
 ### Description
 
-Using Exchange Rate API, this application allows the user to enter in a US dollar amount and see it converted to any currency.
+Using Exchange Rate API, this application allows the user to convert between any two currencies.
 
 Includes 'Erroneous Currency' to demonstrate error handling and displaying.
+
+Plays a sound when number converts. If the converted number is over 100,000, the sound changes.
 
 ## Technologies Used:
 
@@ -19,7 +21,6 @@ Includes 'Erroneous Currency' to demonstrate error handling and displaying.
 
 # Installation/Setup:
 
-## Desktop/Stand-alone Setup:
 1. Clone this repository
 2. Enter your email for a free API key on [Exchange Rate API's website](https://www.exchangerate-api.com/)
 3. Create a file '.env' and place it in the root folder of the downloaded repository.

@@ -17,7 +17,6 @@ window.onload = () => {
     let fromCurrency = document.querySelector("#convertFrom option:checked");
     let toCurrency = document.querySelector("#convertTo option:checked");
     let ratePromise = Currency.getExchangeRateFromNToN(fromCurrency.id, toCurrency.id);
-    populateRandomRates();
     ratePromise.then(
       (response)=>{
         if(response.conversion_rate) {
@@ -26,6 +25,7 @@ window.onload = () => {
           The conversion rate is <strong>1 to ${response.conversion_rate}.</strong>`;
           displayAsciiCounter(answer.toString());
           displayOutput(output);
+          populateRandomRates();
           if(answer > 100000) {
             sound2.play();
           } else {
@@ -41,14 +41,15 @@ window.onload = () => {
 };
 
 function displayError(msg) {
+  document.getElementById("output").innerText = "";
   let errorSpot = document.getElementById("errorSpot");
   errorSpot.innerText = msg;
 }
 
 function displayOutput(msg) {
+  displayError("");
   let outputSpot = document.getElementById("output");
   outputSpot.innerHTML = msg;
-  displayError("");
 }
 
 function populateSupportedCodes() {
