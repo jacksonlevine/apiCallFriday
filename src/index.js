@@ -43,11 +43,20 @@ window.onload = () => {
 function displayError(msg) {
   document.getElementById("output").innerText = "";
   let errorSpot = document.getElementById("errorSpot");
-  errorSpot.innerText = msg;
+  let responses = {
+    "Error: 400 ": "One of the arguments is invalid.",
+    "Error: 404 ": "The resource was not found",
+    "Error: 403 ": "Forbidden",
+    "Error: 401 ": "Unauthorized",
+  };
+  console.log(msg);
+  let string = responses[msg];
+  errorSpot.innerText = string;
 }
 
 function displayOutput(msg) {
-  displayError("");
+  let errorSpot = document.getElementById("errorSpot");
+  errorSpot.innerText = "";
   let outputSpot = document.getElementById("output");
   outputSpot.innerHTML = msg;
 }
